@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CT Portfolio Simulator | Terminal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Terminal Container -->
+    <div class="terminal-container">
+        
+        <!-- Header Bar -->
+        <header class="header-bar">
+            <div class="header-left">
+                <span class="terminal-icon">▶</span>
+                <h1 class="terminal-title">CT PORTFOLIO SIMULATOR</h1>
+            </div>
+            <div class="header-right">
+                <span class="session-indicator">SESSION ACTIVE</span>
+            </div>
+        </header>
+
+        <!-- Main Dashboard Grid -->
+        <div class="dashboard-grid">
+            
+            <!-- Left Column: Portfolio & Stats -->
+            <aside class="panel portfolio-panel">
+                <div class="panel-header">
+                    <span class="panel-title">PORTFOLIO</span>
+                    <span class="panel-badge" id="round-badge">ROUND 1</span>
+                </div>
+                <div class="panel-body">
+                    <div class="stat-group">
+                        <div class="stat-row">
+                            <span class="stat-label">BALANCE</span>
+                            <span class="stat-value large" id="balance-value">$10,000</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">P&L</span>
+                            <span class="stat-value" id="pnl-value">$0.00</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">RETURN</span>
+                            <span class="stat-value" id="return-value">0.0%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="divider"></div>
+                    
+                    <div class="stat-group">
+                        <div class="stat-row">
+                            <span class="stat-label">TRADES</span>
+                            <span class="stat-value" id="trades-count">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">WINS</span>
+                            <span class="stat-value green" id="wins-count">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">LOSSES</span>
+                            <span class="stat-value red" id="losses-count">0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="divider"></div>
+                    
+                    <div class="portfolio-chart" id="portfolio-chart">
+                        <div class="chart-bar" style="height: 50%;"></div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Center Column: Token Display -->
+            <main class="panel token-panel">
+                <div class="panel-header">
+                    <span class="panel-title">MARKET OPPORTUNITY</span>
+                    <button class="refresh-btn" id="refresh-token" title="Skip to next token">⟳ SKIP</button>
+                </div>
+                <div class="panel-body">
+                    <!-- Token Data Table -->
+                    <div class="token-display" id="token-display">
+                        <div class="token-header-info">
+                            <h2 class="token-name" id="token-name">---</h2>
+                            <span class="token-ticker" id="token-ticker">$---</span>
+                        </div>
+                        
+                        <p class="token-narrative" id="token-narrative">Initializing market data...</p>
+                        
+                        <table class="data-table">
+                            <tr>
+                                <td class="data-label">MARKET CAP</td>
+                                <td class="data-value" id="token-mcap">---</td>
+                            </tr>
+                            <tr>
+                                <td class="data-label">FDV</td>
+                                <td class="data-value" id="token-fdv">---</td>
+                            </tr>
+                            <tr>
+                                <td class="data-label">CIRC. SUPPLY</td>
+                                <td class="data-value" id="token-unlock">---</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- Allocation Controls -->
+                    <div class="allocation-controls">
+                        <div class="control-label">ALLOCATE CAPITAL</div>
+                        <div class="button-grid">
+                            <button class="alloc-btn" data-percent="10">10%</button>
+                            <button class="alloc-btn" data-percent="25">25%</button>
+                            <button class="alloc-btn" data-percent="50">50%</button>
+                            <button class="alloc-btn highlight" data-percent="100">ALL IN</button>
+                        </div>
+                        <div class="allocation-preview" id="alloc-preview">
+                            Select allocation amount
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Right Column: Activity Log -->
+            <aside class="panel log-panel">
+                <div class="panel-header">
+                    <span class="panel-title">ACTIVITY LOG</span>
+                </div>
+                <div class="panel-body">
+                    <div class="log-container" id="log-container">
+                        <div class="log-entry system">
+                            <span class="log-timestamp">00:00:00</span>
+                            <span class="log-message">System initialized. Starting capital: $10,000</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+
+        <!-- Game Over Overlay -->
+        <div class="overlay hidden" id="game-over-overlay">
+            <div class="overlay-content">
+                <div class="overlay-header">SESSION TERMINATED</div>
+                <div class="overlay-body">
+                    <p class="overlay-message" id="game-over-message">Portfolio depleted</p>
+                    
+                    <div class="final-stats">
+                        <div class="final-stat-row">
+                            <span>FINAL BALANCE</span>
+                            <span id="final-balance">$0</span>
+                        </div>
+                        <div class="final-stat-row">
+                            <span>TOTAL P&L</span>
+                            <span id="final-pnl">-$10,000</span>
+                        </div>
+                        <div class="final-stat-row">
+                            <span>ROUNDS SURVIVED</span>
+                            <span id="final-rounds">0</span>
+                        </div>
+                        <div class="final-stat-row">
+                            <span>WIN RATE</span>
+                            <span id="final-winrate">0%</span>
+                        </div>
+                    </div>
+                    
+                    <button class="restart-btn" id="restart-btn">RESTART SIMULATION</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer-bar">
+            <div class="footer-left">
+                <span class="disclaimer">Fictional simulation - Not financial advice</span>
+            </div>
+            <div class="footer-right">
+                <span class="watermark">Created by Kriz Boltzmann</span>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

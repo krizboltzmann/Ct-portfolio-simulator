@@ -1,0 +1,558 @@
+/* ========================================
+   RESET & BASE
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', Consolas, monospace;
+    background: #0d1117;
+    color: #c9d1d9;
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+/* ========================================
+   TERMINAL CONTAINER
+   ======================================== */
+
+.terminal-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+/* ========================================
+   HEADER BAR
+   ======================================== */
+
+.header-bar {
+    background: #161b22;
+    border-bottom: 1px solid #30363d;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.terminal-icon {
+    color: #58a6ff;
+    font-size: 1.2rem;
+}
+
+.terminal-title {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #c9d1d9;
+}
+
+.session-indicator {
+    font-size: 0.7rem;
+    color: #3fb950;
+    letter-spacing: 1px;
+    border: 1px solid #3fb950;
+    padding: 4px 8px;
+    border-radius: 2px;
+}
+
+/* ========================================
+   DASHBOARD GRID
+   ======================================== */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr 320px;
+    gap: 1px;
+    flex: 1;
+    background: #30363d;
+    padding: 0;
+}
+
+/* ========================================
+   PANELS
+   ======================================== */
+
+.panel {
+    background: #0d1117;
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-header {
+    background: #161b22;
+    border-bottom: 1px solid #30363d;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panel-title {
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    color: #8b949e;
+    font-weight: 600;
+}
+
+.panel-badge {
+    font-size: 0.7rem;
+    color: #58a6ff;
+    background: rgba(88, 166, 255, 0.1);
+    border: 1px solid #58a6ff;
+    padding: 2px 8px;
+    border-radius: 2px;
+}
+
+.panel-body {
+    padding: 16px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* ========================================
+   PORTFOLIO PANEL
+   ======================================== */
+
+.stat-group {
+    margin-bottom: 12px;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    color: #8b949e;
+    letter-spacing: 1px;
+}
+
+.stat-value {
+    font-size: 0.9rem;
+    color: #c9d1d9;
+    font-weight: 600;
+}
+
+.stat-value.large {
+    font-size: 1.4rem;
+    color: #58a6ff;
+}
+
+.stat-value.green {
+    color: #3fb950;
+}
+
+.stat-value.red {
+    color: #f85149;
+}
+
+.divider {
+    height: 1px;
+    background: #21262d;
+    margin: 12px 0;
+}
+
+/* Portfolio Chart */
+.portfolio-chart {
+    height: 100px;
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 3px;
+    padding: 8px;
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    overflow-x: auto;
+}
+
+.chart-bar {
+    flex: 1;
+    min-width: 4px;
+    background: linear-gradient(to top, #1f6feb, #58a6ff);
+    border-radius: 1px;
+    transition: height 0.3s ease;
+}
+
+/* ========================================
+   TOKEN PANEL
+   ======================================== */
+
+.token-display {
+    margin-bottom: 24px;
+}
+
+.token-header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+}
+
+.token-name {
+    font-size: 1.3rem;
+    color: #c9d1d9;
+    font-weight: 700;
+}
+
+.token-ticker {
+    font-size: 1rem;
+    color: #58a6ff;
+    font-weight: 600;
+}
+
+.token-narrative {
+    color: #8b949e;
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+    line-height: 1.6;
+    font-style: italic;
+    border-left: 2px solid #30363d;
+    padding-left: 12px;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.data-table tr {
+    border-bottom: 1px solid #21262d;
+}
+
+.data-table td {
+    padding: 10px 0;
+}
+
+.data-label {
+    font-size: 0.7rem;
+    color: #8b949e;
+    letter-spacing: 1px;
+    width: 40%;
+}
+
+.data-value {
+    font-size: 0.9rem;
+    color: #c9d1d9;
+    text-align: right;
+    font-weight: 600;
+}
+
+/* Allocation Controls */
+.allocation-controls {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 4px;
+    padding: 16px;
+}
+
+.control-label {
+    font-size: 0.7rem;
+    color: #8b949e;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.alloc-btn {
+    background: #21262d;
+    border: 1px solid #30363d;
+    color: #c9d1d9;
+    padding: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 3px;
+}
+
+.alloc-btn:hover {
+    background: #30363d;
+    border-color: #58a6ff;
+    color: #58a6ff;
+}
+
+.alloc-btn.highlight {
+    background: #1f6feb;
+    border-color: #1f6feb;
+    color: #ffffff;
+}
+
+.alloc-btn.highlight:hover {
+    background: #58a6ff;
+    border-color: #58a6ff;
+}
+
+.allocation-preview {
+    font-size: 0.75rem;
+    color: #8b949e;
+    text-align: center;
+    padding: 8px;
+    background: #0d1117;
+    border-radius: 2px;
+}
+
+.refresh-btn {
+    background: transparent;
+    border: 1px solid #30363d;
+    color: #8b949e;
+    padding: 4px 12px;
+    font-size: 0.7rem;
+    font-family: 'Courier New', monospace;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+}
+
+.refresh-btn:hover {
+    border-color: #f85149;
+    color: #f85149;
+}
+
+/* ========================================
+   LOG PANEL
+   ======================================== */
+
+.log-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.75rem;
+}
+
+.log-entry {
+    padding: 8px;
+    background: #161b22;
+    border-left: 2px solid #30363d;
+    border-radius: 2px;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.log-entry.system {
+    border-left-color: #8b949e;
+}
+
+.log-entry.trade {
+    border-left-color: #58a6ff;
+}
+
+.log-entry.profit {
+    border-left-color: #3fb950;
+}
+
+.log-entry.loss {
+    border-left-color: #f85149;
+}
+
+.log-timestamp {
+    display: block;
+    color: #6e7681;
+    font-size: 0.65rem;
+    margin-bottom: 4px;
+}
+
+.log-message {
+    display: block;
+    color: #c9d1d9;
+    line-height: 1.4;
+}
+
+/* ========================================
+   GAME OVER OVERLAY
+   ======================================== */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 17, 23, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.overlay.hidden {
+    display: none;
+}
+
+.overlay-content {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    max-width: 500px;
+    width: 90%;
+}
+
+.overlay-header {
+    background: #21262d;
+    padding: 16px 20px;
+    border-bottom: 1px solid #30363d;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: #f85149;
+    font-weight: 700;
+    text-align: center;
+}
+
+.overlay-body {
+    padding: 24px;
+}
+
+.overlay-message {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #8b949e;
+    margin-bottom: 24px;
+}
+
+.final-stats {
+    background: #0d1117;
+    border: 1px solid #21262d;
+    border-radius: 4px;
+    padding: 16px;
+    margin-bottom: 24px;
+}
+
+.final-stat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #21262d;
+}
+
+.final-stat-row:last-child {
+    border-bottom: none;
+}
+
+.final-stat-row span:first-child {
+    font-size: 0.75rem;
+    color: #8b949e;
+    letter-spacing: 1px;
+}
+
+.final-stat-row span:last-child {
+    font-size: 0.95rem;
+    color: #c9d1d9;
+    font-weight: 600;
+}
+
+.restart-btn {
+    width: 100%;
+    background: #1f6feb;
+    border: 1px solid #1f6feb;
+    color: #ffffff;
+    padding: 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+    cursor: pointer;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+}
+
+.restart-btn:hover {
+    background: #58a6ff;
+    border-color: #58a6ff;
+}
+
+/* ========================================
+   FOOTER BAR
+   ======================================== */
+
+.footer-bar {
+    background: #161b22;
+    border-top: 1px solid #30363d;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.disclaimer {
+    font-size: 0.65rem;
+    color: #6e7681;
+    font-style: italic;
+}
+
+.watermark {
+    font-size: 0.7rem;
+    color: #8b949e;
+    letter-spacing: 0.5px;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 1200px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+    }
+    
+    .log-panel {
+        max-height: 300px;
+    }
+}
+
+@media (max-width: 600px) {
+    .header-bar,
+    .footer-bar {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+    
+    .button-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .terminal-title {
+        font-size: 0.85rem;
+    }
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+.hidden {
+    display: none;
+}
