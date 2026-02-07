@@ -30,7 +30,7 @@ Human taste handled the design.
 - Hosted via GitHub Pages
 
 ### Live Demo
-👉 
+👉 https://krizboltzmann.github.io/Ct-portfolio-simulator/
 
 ---
 
